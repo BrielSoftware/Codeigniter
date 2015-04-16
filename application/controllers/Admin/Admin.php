@@ -7,6 +7,10 @@ class Welcome extends CI_Controller {
 		$this->load->view('test');
 	}
 	public function test2(){
+<<<<<<< HEAD
 		$this->load->view('welcome_message');
+=======
+		$this->load->view('test');
+>>>>>>> origin/master
 	}
 }
