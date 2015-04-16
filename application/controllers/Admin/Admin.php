@@ -13,4 +13,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('test');
 
 	}
+	public function test4(){
+		$this->load->view('test');
+	}
 }
