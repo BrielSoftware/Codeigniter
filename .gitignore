@@ -41,4 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-*.project
+<<<<<<< HEAD
+=======
+*.buildpath
+.project
+*.prefs
+>>>>>>> origin/master
