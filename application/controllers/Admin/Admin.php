@@ -5,7 +5,7 @@ class Admin extends CI_Controller {
 
     public function index(){
     	
-        $data['main_content'] = 'template/admin/index';
+        $data = array('main_content' => 'template/admin/index', 'page_title' => 'Welcome');
         
         $this->load->view('template/admin/page', $data);
         

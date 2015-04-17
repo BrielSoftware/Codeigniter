@@ -45,6 +45,10 @@ body{
 	float: left;
 	font-weight: bold;
 }
+.header_menu{
+	float: left;
+	margin-left: 30px;
+}
 .header_username{
 	float: right;
 }
@@ -52,16 +56,36 @@ body{
 	margin-left: 30px;
 	float: right;
 }
-
-.link {
+.sub_page_menu{
+	padding-left: 20px;
+}
+.first_column{
+	float: left;
+	padding: 10px 10px;
+}
+.second_column{
+	float: left;	
+}
+.link{
 	padding: .4em 1em .4em 20px;
 	text-decoration: none;
 	position: relative;
 }
-.link span.ui-icon {
+.link span.ui-icon{
 	margin: 0 5px 0 0;
 	position: absolute;
 	left: .2em;
 	top: 50%;
 	margin-top: -8px;
+}
+
+p.footer{
+	text-align: right;
+	font-size: 11px;
+	border-top: 1px solid #D0D0D0;
+	line-height: 32px;
+	margin: 0px 0 0 0;
+	position: fixed;
+	bottom: 0;
+	width: 98%;
 }

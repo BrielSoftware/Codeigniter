@@ -2,7 +2,10 @@
 <html>
 <head>
 <?php 
-$this->load->view('template/admin/head');
+if(empty($page_title)){
+	$page_title = 'Codeigniter';
+}
+$this->load->view('template/admin/head', array('page_title' => $page_title));
 ?>
 </head>
 <body>
