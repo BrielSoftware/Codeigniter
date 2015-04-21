@@ -1,18 +1,31 @@
 
-<div class="first_column ui-corner-all ui-widget ui-widget-content">
-    <div class="sub_page_menu">
-        <a href="<?php echo base_url('admin/site/site_add_new'); ?>" class="link ui-state-default ui-corner-all"><span class="ui-icon ui-icon-clipboard"></span>Add new</a>
-    </div>
+<div class="first_column ui-corner-all ui-widget ui-widget-content margin_right_10">
+    <h3>Sites list</h3>
     <?php
     if(!empty($arrSites) && is_array($arrSites)){
     	
         ?>
-        <div class="another_list_wrapper">
-            <ul>
+        <div class="another_list_wrapper site_list_wrapper">
+            <ul class="site_list_ul">
                 <?php 
                 foreach ($arrSites as $site){
+                    if($site['status'] == '1'){
+                    	$status_label = 'Active';
+                    	$status_class = 'status_active';
+                    }else{
+                    	$status_label = 'Disabled';
+                        $status_class = 'status_inactive';
+                    }
                 	?>
-                	<li><?php echo $site['site_name']; ?></li>
+                	<li class="ui-corner-all ui-widget ui-widget-content">
+                	   <a class="site_list_link" href="<?php echo $site['site_url']; ?>" title="<?php echo $site['site_name']; ?>" target="_blank"><?php echo $site['site_name']; ?></a>
+                	   
+                	   <a class="ui-state-default ui-corner-all icons" title="Edit" href="<?php echo base_url('admin/site/site_list/?edit='.$site['id']); ?>"><span class="ui-icon ui-icon-pencil"></span></a>
+                	   <a class="ui-state-default ui-corner-all icons" title="Delete" onclick="return confirm('Are you sure you want to delete this site ?');" href="<?php echo base_url('admin/site/site_delete/?delete='.$site['id']); ?>"><span class="ui-icon ui-icon-trash"></span></a>
+                	   
+                	   <span class="site_list_status <?php echo $status_class; ?>"><?php echo $status_label; ?></span>
+                	   <div class="clear"></div>
+                	</li>
                 	<?php
                 }
                 ?>
@@ -38,5 +51,14 @@
     <div class="clear"></div>
 </div>
 
+<?php 
+    if(empty($_GET['edit'])){
 
+        $this->load->view('template/admin/site_list_add');
+        
+    }else{
+    	
+        $this->load->view('template/admin/site_list_edit');
 
+    }
+?>

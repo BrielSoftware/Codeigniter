@@ -30,6 +30,7 @@ class Login extends CI_Controller {
 	    
 	    if ($this->form_validation->run() == false){
 	        
+	        $_SESSION['error_message'] = validation_errors();
 	        redirect('admin');
 	        
 	    }else{

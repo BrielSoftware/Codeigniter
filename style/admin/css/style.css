@@ -7,7 +7,13 @@
 }
 .field{
 	padding: 5px 10px;
+	color: #000;
 }
+
+.large{
+	width: 300px;
+}
+
 body{
 	font-size: 12px;
 }
@@ -62,10 +68,17 @@ body{
 .first_column{
 	float: left;
 	padding: 10px 10px;
+	width: 40%;
 }
 .second_column{
 	float: left;	
+	width: 40%;
 }
+
+.margin_right_10{
+	margin-right: 10px;
+}
+
 .link{
 	padding: .4em 1em .4em 20px;
 	text-decoration: none;
@@ -77,6 +90,44 @@ body{
 	left: .2em;
 	top: 50%;
 	margin-top: -8px;
+}
+
+.site_list_wrapper{
+	width: 90%;
+}
+ul.site_list_ul li{
+	list-style-type: none;
+	padding: 5px 10px;
+	margin: 3px 0;
+}
+span.site_list_status{
+	float: right;
+	font-size: 11px;
+	font-weight: bold;
+	margin-right: 20px;
+	margin-top: 8px;
+}
+span.status_inactive{
+	color: #cc0000;
+}
+span.status_active{
+	color: #00cc00;
+}
+
+a.icons{
+	margin: 2px;
+	position: relative;
+	padding: 4px 4px;
+	cursor: pointer;
+	float: right;
+}
+a.icons span..ui-icon{
+	float: left;
+	margin: 0 4px;
+}
+
+a.site_list_icons{
+	float: right;
 }
 
 p.footer{
