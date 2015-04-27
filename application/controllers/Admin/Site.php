@@ -18,7 +18,7 @@ class Site extends CI_Controller {
         
         $pagination = $arrResults['pagination'];
         
-        $data = array(  'main_content' => 'template/admin/site_list', 
+        $data = array(  'main_content' => 'template/admin/site/site_list', 
                         'page_title' => 'Sites list',
                         'arrSites' => $arrSites,
                         'pagination' => $pagination,
@@ -178,6 +178,51 @@ class Site extends CI_Controller {
         }
     }
     
+    public function site_add_page(){
+        
+        if(!empty($_GET['add_site_page'])){
+            $arrSite = $this->_getOneSite($_GET['add_site_page']);
+        }else{
+            $arrSite = array();
+        }
+        
+        if(!empty($this->input->post('site_page_url'))){
+            $page_contents = file_get_contents($this->input->post('site_page_url'));
+            $page_contents = $this->_cleanPageContents($page_contents, $arrSite['site_url']);
+        }else{
+            $page_contents = '';
+        }
+        
+        $data = array(  'main_content' => 'template/admin/site/site_add_page',
+                        'page_title' => 'Sites list',
+                        'arrSite' => $arrSite,
+                        'page_contents' => $page_contents);
+        
+        $this->load->view('template/admin/page', $data);
+        
+    }
+    protected function _cleanPageContents($content, $site_url){
+    	
+        $content = str_ireplace('src="//', 'briel_src_v1', $content);
+        $content = str_ireplace("src='//", 'briel_src_v2', $content);
+        
+        $content = str_ireplace('href="//', 'briel_href_v1', $content);
+        $content = str_ireplace("href='//", 'briel_href_v2', $content);
+        
+        $content = str_ireplace('src="/', 'src="' . $site_url . '/', $content);
+        $content = str_ireplace("src='/", "src='" . $site_url . '/', $content);
+        
+        $content = str_ireplace('href="/', 'href="' . $site_url . '/', $content);
+        $content = str_ireplace("href='/", "href='" . $site_url . '/', $content);
+        
+        $content = str_ireplace('briel_src_v1', 'src="//', $content);
+        $content = str_ireplace("briel_src_v2", "src='//", $content);
+        
+        $content = str_ireplace('briel_href_v1', 'href="//', $content);
+        $content = str_ireplace("briel_href_v2", "href='//", $content);
+        
+        return $content;
+    }
     protected function _make_pretty_url($site_url){
     	
         if(stripos($site_url, 'http://') === false){

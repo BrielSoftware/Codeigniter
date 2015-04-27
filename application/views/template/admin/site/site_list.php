@@ -20,6 +20,7 @@
                 	<li class="ui-corner-all ui-widget ui-widget-content">
                 	   <a class="site_list_link" href="<?php echo $site['site_url']; ?>" title="<?php echo $site['site_name']; ?>" target="_blank"><?php echo $site['site_name']; ?></a>
                 	   
+                	   <a class="ui-state-default ui-corner-all icons" title="Add site product page" href="<?php echo base_url('admin/site/site_add_page/?add_site_page='.$site['id']); ?>"><span class="ui-icon ui-icon-transfer-e-w"></span></a>
                 	   <a class="ui-state-default ui-corner-all icons" title="Edit" href="<?php echo base_url('admin/site/site_list/?edit='.$site['id']); ?>"><span class="ui-icon ui-icon-pencil"></span></a>
                 	   <a class="ui-state-default ui-corner-all icons" title="Delete" onclick="return confirm('Are you sure you want to delete this site ?');" href="<?php echo base_url('admin/site/site_delete/?delete='.$site['id']); ?>"><span class="ui-icon ui-icon-trash"></span></a>
                 	   
@@ -54,11 +55,24 @@
 <?php 
     if(empty($_GET['edit'])){
 
-        $this->load->view('template/admin/site_list_add');
+        $this->load->view('template/admin/site/site_list_add');
         
     }else{
     	
-        $this->load->view('template/admin/site_list_edit');
+        $this->load->view('template/admin/site/site_list_edit');
 
     }
 ?>
+
+<script type="text/javascript">
+
+$(".site_list_ul li a.ui-state-default").hover(
+	function(){
+		$(this).addClass( "ui-state-hover" );
+	},
+	function(){
+		$(this).removeClass( "ui-state-hover" );
+	}
+);
+
+</script>

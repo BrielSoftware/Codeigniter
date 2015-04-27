@@ -13,6 +13,9 @@
 .large{
 	width: 300px;
 }
+.extra_large{
+	width: 500px;
+}
 
 body{
 	font-size: 12px;
